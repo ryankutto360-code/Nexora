@@ -12,6 +12,7 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.focusable
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -134,10 +135,10 @@ private fun NavItem(label: String, selected: Boolean, onClick: () -> Unit) {
             .onFocusChanged { focused = it.isFocused }
             .background(if (selected || focused) Blue.copy(alpha = 0.18f) else Color.Transparent, RoundedCornerShape(14.dp))
             .border(if (focused) 2.dp else 1.dp, if (selected || focused) Blue.copy(alpha = 0.8f) else Color.Transparent, RoundedCornerShape(14.dp))
+            .clickable(onClick = onClick)
             .focusable()
             .padding(horizontal = 14.dp, vertical = 10.dp)
     ) {
-        androidx.compose.foundation.clickableNoRipple(onClick = onClick)
         Text(label, color = color, fontSize = 12.sp, fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium)
     }
 }
